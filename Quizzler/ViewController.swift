@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let firstQuestion = allQuestions.list[0]
+        let firstQuestion = allQuestions.list[questionNumber]
         questionLabel.text = firstQuestion.questionText
         
     }
@@ -29,13 +29,14 @@ class ViewController: UIViewController {
 
     @IBAction func answerPressed(_ sender: AnyObject) {
         if sender.tag == 1 {
-            pickedAnswer = true
+            pickedAnswer = allQuestions.list[questionNumber].answer ? true : false
         } else if sender.tag == 2 {
-            pickedAnswer = false
+            pickedAnswer = !allQuestions.list[questionNumber].answer ? true : false
         }
         
         checkAnswer()
         questionNumber += 1
+        questionLabel.text = allQuestions.list[questionNumber].questionText
     }
     
     
