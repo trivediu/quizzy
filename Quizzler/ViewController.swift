@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let firstQuestion = allQuestions.list[0]
-        
+        questionLabel.text = firstQuestion.questionText
         
     }
 
