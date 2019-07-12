@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     //initialize a question bank
     let allQuestions = QuestionBank()
     var pickedAnswer: Bool = false
+    var questionNumber : Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
         }
         
         checkAnswer()
+        questionNumber += 1
     }
     
     
