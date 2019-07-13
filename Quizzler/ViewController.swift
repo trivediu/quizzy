@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     func updateUI() {
         //Update Total Score Displayed to the User
-        scoreLabel.text = String(score)
+        scoreLabel.text = "Score: " + String(score)
         
         //Update the Current Question / Total Questions Displayed to User
         progressLabel.text = (String(questionNumber)) + "/" + String(allQuestions.list.count)
