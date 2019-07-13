@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     func updateUI() {
         scoreLabel.text = String(score)
-        progressLabel.text = String(questionNumber + 1)
+        progressLabel.text = (String(questionNumber + 1)) + "/" + String(allQuestions.list.count)
       
     }
     
