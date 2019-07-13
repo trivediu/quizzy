@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     //initialize a question bank
     let allQuestions = QuestionBank()
     var pickedAnswer: Bool = false
-    var questionNumber : Int = 0
+    var questionNumber : Int = -1
     var score : Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     
     func updateUI() {
         scoreLabel.text = String(score)
-        progressLabel.text = (String(questionNumber)) + "/" + String(allQuestions.list.count)
+        progressLabel.text = (String(questionNumber + 1)) + "/" + String(allQuestions.list.count)
       
     }
     
@@ -47,8 +47,11 @@ class ViewController: UIViewController {
         if (questionNumber < 12) {
             questionNumber += 1
             questionLabel.text = allQuestions.list[questionNumber].questionText
+            updateUI()
+            
             
         } else {
+            updateUI()
             let alert = UIAlertController(title:"Awesome", message: "You Finished All The Questions.  Would You Like To Start Over Again?", preferredStyle: .alert)
 
             let alertAction = UIAlertAction(title: NSLocalizedString("Restart", comment: "Default action"), style: .default, handler: {_ in
@@ -59,7 +62,7 @@ class ViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         }
-        updateUI()
+        
         
     }
     
