@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         
         checkAnswer()
         questionNumber += 1
+        nextQuestion()
         
     }
     
@@ -45,8 +46,15 @@ class ViewController: UIViewController {
         if (questionNumber <= 12) {
           questionLabel.text = allQuestions.list[questionNumber].questionText
         } else {
-            print("End of Quiz")
-            questionLabel.text
+            let alert = UIAlertController(title:"Awesome", message: "u finished all questions, wanna start over?", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: NSLocalizedString("Restart", comment: "Default action"), style: .default, handler: {_ in
+                self.startOver()
+            })
+            
+            alert.addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
+            
         }
         
     }
