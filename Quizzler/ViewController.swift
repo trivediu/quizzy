@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     //initialize a question bank
     let allQuestions = QuestionBank()
     var pickedAnswer: Bool = false
-    var questionNumber : Int = -1
+    var questionNumber : Int = 0
     var score : Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(allQuestions.list.count)
         nextQuestion()
         updateUI()
     }
@@ -38,15 +39,15 @@ class ViewController: UIViewController {
     
     func updateUI() {
         scoreLabel.text = String(score)
-        progressLabel.text = (String(questionNumber + 1)) + "/" + String(allQuestions.list.count)
+        progressLabel.text = (String(questionNumber)) + "/" + String(allQuestions.list.count)
       
     }
     
 
     func nextQuestion() {
-        if (questionNumber < 12) {
+    if (questionNumber < allQuestions.list.count) {
             questionNumber += 1
-            questionLabel.text = allQuestions.list[questionNumber].questionText
+            questionLabel.text = allQuestions.list[questionNumber - 1].questionText
             updateUI()
             
             
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
     
     
     func checkAnswer() {
-        let correctAnswer = allQuestions.list[questionNumber].answer
+        let correctAnswer = allQuestions.list[questionNumber - 1].answer
         score += correctAnswer == pickedAnswer ? 1 : 0
         //updateUI()
     }
