@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         pickedAnswer = sender.tag == 1 ? true : false
         
         checkAnswer()
-        questionNumber += 1
+        //questionNumber += 1
         nextQuestion()
         
     }
@@ -38,14 +38,16 @@ class ViewController: UIViewController {
     
     func updateUI() {
         scoreLabel.text = String(score)
-        progressLabel.text = (String(questionNumber + 1)) + "/" + String(allQuestions.list.count)
+        progressLabel.text = (String(questionNumber)) + "/" + String(allQuestions.list.count)
       
     }
     
 
     func nextQuestion() {
-        if (questionNumber <= 12) {
+        if (questionNumber < 12) {
+            questionNumber += 1
             questionLabel.text = allQuestions.list[questionNumber].questionText
+            
         } else {
             let alert = UIAlertController(title:"Awesome", message: "You Finished All The Questions.  Would You Like To Start Over Again?", preferredStyle: .alert)
 
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         }
+        updateUI()
         
     }
     
@@ -64,7 +67,7 @@ class ViewController: UIViewController {
     func checkAnswer() {
         let correctAnswer = allQuestions.list[questionNumber].answer
         score += correctAnswer == pickedAnswer ? 1 : 0
-        updateUI()
+        //updateUI()
     }
     
     
