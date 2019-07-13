@@ -10,7 +10,6 @@ class ViewController: UIViewController {
     
     //initialize a question bank
     let allQuestions = QuestionBank()
-    var pickedAnswer: Bool = false
     var questionNumber : Int = 0
     var score : Int = 0
     
@@ -28,10 +27,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func answerPressed(_ sender: AnyObject) {
-        pickedAnswer = sender.tag == 1 ? true : false
-        
-        checkAnswer()
-        //questionNumber += 1
+        checkAnswer(pickedAnswer: sender.tag == 1 ? true : false)
         nextQuestion()
         
     }
@@ -68,10 +64,9 @@ class ViewController: UIViewController {
     }
     
     
-    func checkAnswer() {
+    func checkAnswer(pickedAnswer: Bool) {
         let correctAnswer = allQuestions.list[questionNumber - 1].answer
         score += correctAnswer == pickedAnswer ? 1 : 0
-        //updateUI()
     }
     
     
@@ -82,4 +77,4 @@ class ViewController: UIViewController {
         nextQuestion()
     }
     
-} //End Class
+}
