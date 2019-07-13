@@ -5,13 +5,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    //Place your instance variables here
-    
-    //initialize a question bank
     let allQuestions = QuestionBank()
-    var questionNumber : Int = 0
-    var score : Int = 0
+    var questionNumber : Int = 0 ; var score : Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -20,13 +15,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(allQuestions.list.count)
         nextQuestion()
         updateUI()
     }
 
 
     @IBAction func answerPressed(_ sender: AnyObject) {
+        //Call Check Answer Function Based on True/False Tag Identifier (1 or 2)
         checkAnswer(pickedAnswer: sender.tag == 1 ? true : false)
         nextQuestion()
         
@@ -34,20 +29,23 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
+        //Update Total Score Displayed to the User
         scoreLabel.text = String(score)
+        
+        //Update the Current Question / Total Questions Displayed to User
         progressLabel.text = (String(questionNumber)) + "/" + String(allQuestions.list.count)
       
     }
     
 
     func nextQuestion() {
-    if (questionNumber < allQuestions.list.count) {
+        if (questionNumber < allQuestions.list.count) {
             questionNumber += 1
             questionLabel.text = allQuestions.list[questionNumber - 1].questionText
             updateUI()
             
-            
         } else {
+            //If Complete With all Questions Prompt User to Restart Quiz
             updateUI()
             let alert = UIAlertController(title:"Awesome", message: "You Finished All The Questions.  Would You Like To Start Over Again?", preferredStyle: .alert)
 
@@ -57,10 +55,7 @@ class ViewController: UIViewController {
             
             alert.addAction(alertAction)
             self.present(alert, animated: true, completion: nil)
-            
         }
-        
-        
     }
     
     
@@ -71,10 +66,8 @@ class ViewController: UIViewController {
     
     
     func startOver() {
-        questionNumber = 0
-        score = 0
+        questionNumber = 0 ; score = 0
         updateUI()
         nextQuestion()
     }
-    
 }
