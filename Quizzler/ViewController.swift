@@ -28,11 +28,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func answerPressed(_ sender: AnyObject) {
-        if sender.tag == 1 {
-            pickedAnswer = allQuestions.list[questionNumber].answer ? true : false
-        } else if sender.tag == 2 {
-            pickedAnswer = !allQuestions.list[questionNumber].answer ? true : false
-        }
+        pickedAnswer = sender.tag == 1 ? true : false
         
         checkAnswer()
         questionNumber += 1
@@ -51,7 +47,7 @@ class ViewController: UIViewController {
     
     
     func checkAnswer() {
-        let correctAnswer = allQuestions.list[0].answer
+        let correctAnswer = allQuestions.list[questionNumber].answer
         correctAnswer == pickedAnswer ? print("You Got It!") : print("Wrong!")
     }
     
