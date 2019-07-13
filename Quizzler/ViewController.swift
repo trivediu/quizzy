@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         if (questionNumber <= 12) {
           questionLabel.text = allQuestions.list[questionNumber].questionText
         } else {
-            let alert = UIAlertController(title:"Awesome", message: "u finished all questions, wanna start over?", preferredStyle: .alert)
+            let alert = UIAlertController(title:"Awesome", message: "You Finished All The Questions.  Would You Like To Start Over Again?", preferredStyle: .alert)
 
             let alertAction = UIAlertAction(title: NSLocalizedString("Restart", comment: "Default action"), style: .default, handler: {_ in
                 self.startOver()
