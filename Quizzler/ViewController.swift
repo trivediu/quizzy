@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         //Update the Current Question / Total Questions Displayed to User
         progressLabel.text = (String(questionNumber)) + "/" + String(allQuestions.list.count)
       
+        progressBar.frame.size.width = (view.frame.size.width / CGFloat(allQuestions.list.count)) * CGFloat(questionNumber)
     }
     
 
